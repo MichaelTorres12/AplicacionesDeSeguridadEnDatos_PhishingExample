@@ -1,0 +1,135 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Helvetica Neue, Arial, sans-serif;
+}
+
+body {
+    background-color: #FFFFFF;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.square {
+    width: 430px;
+    height: 580px;
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 3%;
+    
+}
+
+.logo {
+    height: 82px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFFFFF;
+    border-radius: 50%;
+}
+
+.company-logo {
+    height: 50%;
+    object-fit: contain;
+}
+
+.form {
+    height: 410px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input {
+    width: 366px;
+    height: 66px;
+    padding: 10px;
+    font-size: 16px;
+    border: 0.8px solid #adadad;
+    border-radius: 5px;
+}
+
+/* Cambio en el color y grosor del texto para "¿Olvidaste tu correo?" */
+#forgotPassword {
+    color: #0077cc;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button {
+    width: 366px;
+    height: 50px;
+    font-size: 16px;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+/* Cambio en el color de fondo del botón "Siguiente" */
+#submitButton {
+    background-color: #142c8e;
+    color: white;
+    border: none;
+}
+
+/* Cambio en el color del borde del botón "Registrarse", este mismo lo reemplaze por el siguiente */
+.sign-up {
+    background-color: transparent;
+    color: #000000;
+    border: 2px solid black;
+}
+
+/*Enlaces con la clase "sign-up" */
+a.sign-up {
+    display: inline-block;
+    text-decoration: none;
+    line-height: 50px;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 30px;
+}
+
+
+.separator {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 1px;
+    background-color: #ccc;
+}
+
+.or {
+    position: absolute;
+    background-color: white;
+    padding: 0 10px;
+    font-size: 14px;
+    color: #666;
+}
+
+.final {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.languages {
+    font-size: 14px;
+    text-align: center;
+}

